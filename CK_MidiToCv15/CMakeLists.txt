@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(CK_MidiToCv-1.5)
+project(CK_MidiToCv15)
 
 build_gmpi_plugin(
     PROJECT_NAME ${PROJECT_NAME}
