@@ -121,16 +121,16 @@ void CK_MidiToCv::onSetPins()
 
     float GlideM=1.0f;
     float autoG = float(pinAutoGlide);
-    float timeG = float(pinGlideRate);
+    //float timeG = float(pinGlideRate);
     if(pinMidiToCv==1)
     {
     GlideM=0.85f;
     if(autoG==0.0f)autoG=1.0f;
     else
     autoG=0.0f;
-    if(timeG==0.0f)timeG=1.0f;
-    else
-    timeG=0.0f;
+    //if(timeG==0.0f)timeG=1.0f;
+    //else
+   //timeG=0.0f;
     }
 
     if(pinPolyGlide==0 && pinMono==0)GlideM=0.0f;
@@ -174,10 +174,10 @@ void CK_MidiToCv::onSetPins()
     p[5]=float(pinPolyRes);
     p[6]=float(pinPolyMode);
     p[7]=pinGlide*GlideM;
-    //p[8]=float(pinGlideRate);
+    p[8]=float(pinGlideRate);
+    //p[8]=timeG;
     //p[9]=float(pinAutoGlide);
-    p[8]=timeG;
-    p[9]=autoG;
+	p[9]=autoG;
     p[10]=float(pinBRange);
     p[11]=float(pinVoiceRefresh);
 
