@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <PluginList>
-	<Plugin id="CK_MidiToCv-1.5" name="CK_MidiToCv" category="MIDI" polyphonicSource="true" cloned="true">
+	<Plugin id="CK_MidiToCv-1.5" name="CK_MidiToCv15" category="MIDI" polyphonicSource="true" cloned="true">
         <Parameters>
            <Parameter id="0" name="BlobToGui" datatype="blob" private="true" ignorePatchChange="true" persistant="false"/>
         </Parameters>
