@@ -3,14 +3,14 @@
 #include "CK_MidiToCv15.h"
 #include "../shared/voice_allocation_modes.h"
 
-SE_DECLARE_INIT_STATIC_FILE(CK_MidiToCv)
-REGISTER_PLUGIN2 ( CK_MidiToCv, L"CK_MidiToCv-1.5" );
+SE_DECLARE_INIT_STATIC_FILE(CK_MidiToCv15)
+REGISTER_PLUGIN2 ( CK_MidiToCv15, L"CK_MidiToCv-1.5" );
 
 // New. 0v = 0.001s, 10V = 10s
 
 #define VoltageToTime(v) ( powf( 10.0f,((v) * 0.4f ) - 3.0f ) )
 
-CK_MidiToCv::CK_MidiToCv( ):
+CK_MidiToCv15::CK_MidiToCv15( ):
 previousGate_(0.0f)
 , currentGate_(0.0f)
 {
@@ -61,13 +61,13 @@ previousGate_(0.0f)
 	initializePin(pinVoiceBender);
 }
 
-int32_t CK_MidiToCv::open()
+int32_t CK_MidiToCv15::open()
 {
 	MpBase2::open();	// always call the base class
 
 	pinVelocity.setCurveType(SmartAudioPin::Curved);
 
-	SET_PROCESS2(&CK_MidiToCv::subProcess);
+	SET_PROCESS2(&CK_MidiToCv15::subProcess);
 
 	pinTrigger.setTransitionTime(getSampleRate() * 0.0005f); // 0.5 ms trigger pulse.
 	benderInterpolator_.Init(getSampleRate());
@@ -78,7 +78,7 @@ int32_t CK_MidiToCv::open()
 	return gmpi::MP_OK;
 }
 
-void CK_MidiToCv::subProcess( int sampleFrames )
+void CK_MidiToCv15::subProcess( int sampleFrames )
 {
 	auto bufferOffset = getBlockPosition();
 	if( pinPitch.isStreaming() && pitchInterpolator_.isDone() && benderInterpolator_.isDone() )
@@ -101,7 +101,7 @@ void CK_MidiToCv::subProcess( int sampleFrames )
 	pinAftertouchOut.subProcess(bufferOffset, sampleFrames, canSleepUnused);
 }
 
-void CK_MidiToCv::CleanVelocityAndAftertouch()
+void CK_MidiToCv15::CleanVelocityAndAftertouch()
 {
 	// Voice needs clean start, no Velocity Smoothing.
 	// assume velocity changes on exact same sample as reset.
@@ -117,7 +117,7 @@ void CK_MidiToCv::CleanVelocityAndAftertouch()
 	}
 }
 
-void CK_MidiToCv::onSetPins()
+void CK_MidiToCv15::onSetPins()
 {
 
 

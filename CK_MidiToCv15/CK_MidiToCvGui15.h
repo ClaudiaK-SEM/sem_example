@@ -3,10 +3,10 @@
 
 #include "../se_sdk3/mp_sdk_gui2.h"
 
-class CK_MidiToCvGui2 : public gmpi_gui::MpGuiInvisibleBase
+class CK_MidiToCvGui15 : public gmpi_gui::MpGuiInvisibleBase
 {
 public:
-	CK_MidiToCvGui2();
+	CK_MidiToCvGui15();
 //	virtual int32_t MP_STDCALL initialize() override;
 
 	BlobGuiPin BlobToGui;

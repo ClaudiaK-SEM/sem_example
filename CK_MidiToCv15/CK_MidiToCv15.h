@@ -1,4 +1,4 @@
-#ifndef CK_MidiToCv115_H_INCLUDED
+#ifndef CK_MidiToCv15_H_INCLUDED
 #define CK_MidiToCv15_H_INCLUDED
 
 #include "mp_sdk_audio.h"
@@ -7,10 +7,10 @@
 using namespace gmpi;
 
 
-class CK_MidiToCv : public MpBase2
+class CK_MidiToCv15 : public MpBase2
 {
 public:
-	CK_MidiToCv( );
+	CK_MidiToCv15( );
 	int32_t open() override;
     void subProcess(int sampleFrames);
 	void onSetPins() override;

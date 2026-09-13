@@ -7,12 +7,12 @@ using namespace gmpi_gui;
 using namespace voice_allocation;
 using namespace voice_allocation::bits;
 
-//SE_DECLARE_INIT_STATIC_FILE(CK_MidiToCvGui2)
-GMPI_REGISTER_GUI(MP_SUB_TYPE_GUI2, CK_MidiToCvGui2, L"CK_MidiToCv-1.5");
+//SE_DECLARE_INIT_STATIC_FILE(CK_MidiToCvGui15)
+GMPI_REGISTER_GUI(MP_SUB_TYPE_GUI2, CK_MidiToCvGui15, L"CK_MidiToCv-1.5");
 
-CK_MidiToCvGui2::CK_MidiToCvGui2()
+CK_MidiToCvGui15::CK_MidiToCvGui15()
 {
-	initializePin(BlobToGui, static_cast<MpGuiBaseMemberPtr2>( &CK_MidiToCvGui2::onSetBlobToGui ));
+	initializePin(BlobToGui, static_cast<MpGuiBaseMemberPtr2>( &CK_MidiToCvGui15::onSetBlobToGui ));
 	initializePin(hostPolyphony);
 	initializePin(hostReserveVoices);
 	initializePin(hostVoiceAllocationMode);
@@ -21,7 +21,7 @@ CK_MidiToCvGui2::CK_MidiToCvGui2()
 
 }
 
-//int32_t CK_MidiToCvGui2::initialize()
+//int32_t CK_MidiToCvGui15::initialize()
 //{
 
 	/*const auto allocationMode = hostVoiceAllocationMode.getValue();
@@ -55,7 +55,7 @@ CK_MidiToCvGui2::CK_MidiToCvGui2()
 	//return MpGuiInvisibleBase::initialize();
 //}
 
-void CK_MidiToCvGui2::onSetBlobToGui()
+void CK_MidiToCvGui15::onSetBlobToGui()
 {
 
  		if( BlobToGui.rawSize() == sizeof(float) * 12 )
@@ -99,32 +99,32 @@ void CK_MidiToCvGui2::onSetBlobToGui()
 		}
 }
 
-void CK_MidiToCvGui2::onSetBendRange()
+void CK_MidiToCvGui15::onSetBendRange()
 {
 if(BendRange != hostBendRange)hostBendRange = BendRange;
 }
 
-void CK_MidiToCvGui2::onSetPortamento()
+void CK_MidiToCvGui15::onSetPortamento()
 {
 if(PortamentoTime != host_PortamentoTime)host_PortamentoTime = PortamentoTime;
 }
 
-void CK_MidiToCvGui2::onSetPolyphony()
+void CK_MidiToCvGui15::onSetPolyphony()
 {
 if(polyphony != hostPolyphony) hostPolyphony = polyphony;
 }
 
-void CK_MidiToCvGui2::onSetPolyphonyReserve()
+void CK_MidiToCvGui15::onSetPolyphonyReserve()
 {
 if(reserveVoices != hostReserveVoices) hostReserveVoices = reserveVoices;
 }
-void CK_MidiToCvGui2::onSetPolyAndReserve()
+void CK_MidiToCvGui15::onSetPolyAndReserve()
 {
 if(polyphony != hostPolyphony) hostPolyphony = polyphony;
 if(reserveVoices != hostReserveVoices) hostReserveVoices = reserveVoices;
 }
 /*
-void CK_MidiToCvGui2::onSetMonoMode()
+void CK_MidiToCvGui15::onSetMonoMode()
 {
 	const int flags
 		= MM_IN_USE
@@ -135,7 +135,7 @@ void CK_MidiToCvGui2::onSetMonoMode()
 	hostVoiceAllocationMode = insertBits(v, MonoModes_startbit, MonoModes_sizebits, flags);
 }
 
-void CK_MidiToCvGui2::onSetVoiceStealMode()
+void CK_MidiToCvGui15::onSetVoiceStealMode()
 {
 
 	auto v = hostVoiceAllocationMode.getValue();
@@ -147,13 +147,13 @@ void CK_MidiToCvGui2::onSetVoiceStealMode()
 	assert(hostVoiceAllocationMode == insertBits(v, 0, 8, combinedVoiceAllocationMode));
 }
 
-void CK_MidiToCvGui2::onSetNotePriority()
+void CK_MidiToCvGui15::onSetNotePriority()
 {
 	const auto v = hostVoiceAllocationMode.getValue();
 	hostVoiceAllocationMode = insertBits(v, NotePriority_startbit, NotePriority_sizebits, monoNotePriority);
 }
 
-void CK_MidiToCvGui2::onSetVoiceRefresh()
+void CK_MidiToCvGui15::onSetVoiceRefresh()
 {
 	auto v = hostVoiceAllocationMode.getValue();
 
@@ -164,7 +164,7 @@ void CK_MidiToCvGui2::onSetVoiceRefresh()
 	assert(hostVoiceAllocationMode == insertBits(v, 19, 1, VoiceRefresh));
 }
 
-void CK_MidiToCvGui2::onSetGlide()
+void CK_MidiToCvGui15::onSetGlide()
 {
 	auto v = hostVoiceAllocationMode.getValue();
 
@@ -175,7 +175,7 @@ void CK_MidiToCvGui2::onSetGlide()
 	hostVoiceAllocationMode = insertBits(v, 16, 1, GlideType);
 }
 
-void CK_MidiToCvGui2::onSetGlideTiming()
+void CK_MidiToCvGui15::onSetGlideTiming()
 {
     auto v = hostVoiceAllocationMode.getValue();
 
@@ -185,7 +185,7 @@ void CK_MidiToCvGui2::onSetGlideTiming()
 }
 */
 
-void CK_MidiToCvGui2::onSetVoiceAllocation()
+void CK_MidiToCvGui15::onSetVoiceAllocation()
 {
 
     auto v = hostVoiceAllocationMode.getValue();
