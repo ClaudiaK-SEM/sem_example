@@ -51,7 +51,7 @@ private:
 	FloatInPin pinVoiceTrigger;
 	FloatInPin pinVoiceVelocityKeyOn;
 	FloatInPin pinVoicePitch;
-	//FloatInPin pinVoiceBender;
+
 
 	FloatInPin pinVoiceAftertouch;
 	FloatInPin pinChannelPressure;
@@ -59,10 +59,13 @@ private:
 	FloatInPin pinBender;
 	FloatInPin pinBenderRange;
 	FloatInPin pinHoldPedal;
-	//FloatInPin pinSostenutoPedal;
+
 	FloatInPin pinGlideStartPitch;
 	IntInPin pinVoiceAllocationMode;
 	FloatInPin pinPortamento;
+
+	FloatInPin pinVoiceBender;
+	FloatInPin pinSostenutoPedal;
 
 	RampGenerator pitchInterpolator_;
 	RampGeneratorAdaptive benderInterpolator_;

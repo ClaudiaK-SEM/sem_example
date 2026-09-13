@@ -49,14 +49,14 @@ previousGate_(0.0f)
 	initializePin(pinVoiceVirtualVoiceId);
 	initializePin(pinBender);
 	initializePin(pinHoldPedal);
-	//initializePin(pinSostenutoPedal);
 	initializePin(pinGlideStartPitch);
 	initializePin(pinVoiceAllocationMode);
 	initializePin(pinPortamento);
 	initializePin(pinBenderRange);
 	initializePin(pinVoiceAftertouch);
 	initializePin(pinChannelPressure);
-	//initializePin(pinVoiceBender);
+    initializePin(pinVoiceBender);
+    initializePin(pinSostenutoPedal);
 }
 
 int32_t CK_MidiToCv::open()
@@ -223,11 +223,11 @@ void CK_MidiToCv::onSetPins()
 
 	// CC 64 (HoldPedal, mono) or CC 66 (Sostenuto, per-voice): a transition on either may finally
 	// allow a deferred gate-off to take effect. Held = either pedal still pressed for this voice.
-	if( pinHoldPedal.isUpdated())
-	//if( pinHoldPedal.isUpdated() || pinSostenutoPedal.isUpdated() )
+	//if( pinHoldPedal.isUpdated())
+	if( pinHoldPedal.isUpdated() || pinSostenutoPedal.isUpdated() )
 	{
-		//const bool held = pinHoldPedal >= 5.0f || pinSostenutoPedal >= 5.0f;
-		const bool held = pinHoldPedal >= 5.0f;
+		const bool held = pinHoldPedal >= 5.0f || pinSostenutoPedal >= 5.0f;
+		//const bool held = pinHoldPedal >= 5.0f;
 		if (currentGate_ != 0.0f && pinVoiceGate == 0.0f && (!held || pinVoiceActive < 1.0f))
 		{
 			currentGate_ = 0.0f;
@@ -237,14 +237,14 @@ void CK_MidiToCv::onSetPins()
 
 	// PITCH.
 	bool pitchUpdated = false;
-	//if (pinVoiceBender.isUpdated() || pinBender.isUpdated() || pinBenderRange.isUpdated())
-	if (pinBender.isUpdated() || pinBenderRange.isUpdated())
+	if (pinVoiceBender.isUpdated() || pinBender.isUpdated() || pinBenderRange.isUpdated())
+	//if (pinBender.isUpdated() || pinBenderRange.isUpdated())
 	{
 
 		constexpr float benderRangeScale = 1.0f / 120.0f;
 		// voice bender is hard-coded to 48 semitones (for MPE)
-		//const float totalBend = pinVoiceBender * 0.05f + pinBender * pinBenderRange * benderRangeScale;
-		const float totalBend = pinBender * pinBenderRange * benderRangeScale;
+		const float totalBend = pinVoiceBender * 0.05f + pinBender * pinBenderRange * benderRangeScale;
+		//const float totalBend = pinBender * pinBenderRange * benderRangeScale;
 		benderInterpolator_.setTarget(totalBend);
 		pitchUpdated = true;
 	}
@@ -310,8 +310,8 @@ void CK_MidiToCv::onSetPins()
 		else
 		{
 			// Don't drop gate while either pedal holds this voice. voiceActive 0.5 = overlap voice — ignore pedals.
-			//const bool held = pinHoldPedal >= 5.0f || pinSostenutoPedal >= 5.0f;
-			const bool held = pinHoldPedal >= 5.0f;
+			const bool held = pinHoldPedal >= 5.0f || pinSostenutoPedal >= 5.0f;
+			//const bool held = pinHoldPedal >= 5.0f;
 			if (!held || pinVoiceActive < 1.0f)
 			{
 				currentGate_ = 0.0f;

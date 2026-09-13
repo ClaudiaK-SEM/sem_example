@@ -36,8 +36,7 @@
           <Pin name="Voice/VirtualVoiceId" datatype="int" private="true" isPolyphonic="true" hostConnect="Voice/VirtualVoiceId"/>
           <Pin name="Bender" datatype="float" private="true" hostConnect="Bender"/>
           <Pin name="HoldPedal" datatype="float" private="true" hostConnect="HoldPedal"/>
-          <!--SE 1.5-->
-          <!--Pin name="SostenutoPedal" datatype="float" private="true" isPolyphonic="true" hostConnect="SostenutoPedal"/>-->
+
           <Pin name="GlideStartPitch" datatype="float" private="true" isPolyphonic="true" hostConnect="Voice/GlideStartPitch"/>
           <Pin name="VoiceAllocationMode" datatype="int" private="true" hostConnect="VoiceAllocationMode"/>
           <Pin name="Portamento" datatype="float" private="true" hostConnect="Portamento"/>
@@ -45,7 +44,8 @@
           <Pin name="Voice/Aftertouch" datatype="float" private="true" isPolyphonic="true" hostConnect="Voice/Aftertouch"/>
           <Pin name="ChannelPressure" datatype="float" private="true" isPolyphonic="true" hostConnect="Channel Pressure"/>
           <!--SE 1.5-->
-          <!--<Pin name="Voice/Bender" datatype="float" private="true" isPolyphonic="true" hostConnect="Voice/Bender"/>-->
+          <Pin name="Voice/Bender" datatype="float" private="true" isPolyphonic="true" hostConnect="Voice/Bender"/>
+          <Pin name="SostenutoPedal" datatype="float" private="true" isPolyphonic="true" hostConnect="SostenutoPedal"/>
         </Audio>
         <GUI>
           <Pin name="BlobToGui" direction="in" datatype="blob" parameterId="0" private="true"/>
