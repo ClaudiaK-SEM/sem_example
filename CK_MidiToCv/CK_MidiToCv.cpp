@@ -1,7 +1,7 @@
 
 #include <math.h>
 #include "CK_MidiToCv.h"
-#include "../../shared/voice_allocation_modes.h"
+#include "../shared/voice_allocation_modes.h"
 
 SE_DECLARE_INIT_STATIC_FILE(CK_MidiToCv)
 REGISTER_PLUGIN2 ( CK_MidiToCv, L"CK_MidiToCv" );
