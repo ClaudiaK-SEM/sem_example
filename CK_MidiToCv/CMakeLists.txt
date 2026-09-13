@@ -11,4 +11,5 @@ build_gmpi_plugin(
         CK_MidiToCv.h
         CK_MidiToCvGui.cpp
         CK_MidiToCvGui.h
+        CK_MidiToCvGui.rc
 )
