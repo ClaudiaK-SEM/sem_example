@@ -7,6 +7,8 @@ build_gmpi_plugin(
     HAS_DSP
     HAS_GUI
     SOURCE_FILES 
+        ${se_sdk_folder}/smart_audio_pin.h
+        ${se_sdk_folder}/smart_audio_pin.cpp        
         CK_MidiToCv.cpp
         CK_MidiToCv.h
         CK_MidiToCvGui.cpp
